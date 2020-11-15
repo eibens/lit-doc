@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "strict": true,
+    "sourceMap": true,
+    "target": "es5"
+  }
+}
