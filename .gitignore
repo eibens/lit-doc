@@ -1,0 +1,9 @@
+**/.cache
+**/.nyc_output
+**/coverage
+**/node_modules
+**/dist
+**/build
+**/tsconfig.tsbuildinfo
+**/*.log
+/.idea/
