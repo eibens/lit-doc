@@ -22,7 +22,7 @@ export const isLitDocExpression = (node: ts.Node, sourceFile: ts.SourceFile) => 
   return identifier.getText(sourceFile) === 'lit'
 }
 
-export const LitDoc = (source: string): Part[] => {
+export default (source: string): Part[] => {
 
   let sourceFile = ts.createSourceFile(
     'this-is-not-a-real-file.ts',
