@@ -1,4 +1,3 @@
-import {expect} from 'chai'
 import cloze from '.'
 import {h} from 'preact'
 
@@ -8,7 +7,7 @@ it('passes text with blanks to parser', done => {
     blank: i => String(i),
     matchBlank: () => null,
     parse: source => {
-      expect(source).eqls('head 1 middle 3 tail')
+      expect(source).toEqual('head 1 middle 3 tail')
       done()
       return []
     }
@@ -26,7 +25,7 @@ it('replaces multiple blanks', () => {
       h('blank', {i: 1})
     ]
   })
-  expect(result).eqls([21, 'raw text', 42])
+  expect(result).toEqual([21, 'raw text', 42])
 })
 
 it('replaces deep blanks', () => {
@@ -36,7 +35,7 @@ it('replaces deep blanks', () => {
     matchBlank: x => x.type === 'blank' ? 0 : null,
     parse: () => h('custom', null, h('blank', {i: 0}))
   })
-  expect((result as any).props.children).eqls(42)
+  expect((result as any).props.children).toEqual(42)
 })
 
 it('ignores non blank nodes', () => {
@@ -46,5 +45,5 @@ it('ignores non blank nodes', () => {
     matchBlank: x => x.type === 'blank' ? 0 : null,
     parse: () => h('not-blank', null)
   })
-  expect((result as any).type).eqls('not-blank')
+  expect((result as any).type).toEqual('not-blank')
 })

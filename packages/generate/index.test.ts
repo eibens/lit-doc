@@ -1,4 +1,3 @@
-import {expect} from 'chai'
 import Generate, {Props} from '.'
 
 const props: Props = {
@@ -41,5 +40,5 @@ export default {
 `
 
 it('generates the module file as expected', () => {
-  expect(Generate(props)).eqls(result)
+  expect(Generate(props)).toEqual(result)
 })
