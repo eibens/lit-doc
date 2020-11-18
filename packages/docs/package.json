@@ -1,41 +1,26 @@
 {
-  "name": "@eibens/lit-doc-docs",
-  "description": "Documentation and literate programming with template literals.",
+  "name": "@lit-doc/docs",
   "version": "0.0.0",
   "license": "UNLICENSED",
-  "repository": {
-    "url": "https://github.com/eibens/lit-doc.git",
-    "type": "git"
-  },
-  "author": {
-    "name": "Lukas Eibensteiner",
-    "email": "l.eibensteiner@gmail.com"
-  },
   "scripts": {
-    "test": "nyc ts-mocha index.test.ts",
+    "test": "true",
+    "lit": "lit-doc",
     "clean": "del dist",
-    "start": "parcel doc/index.html",
+    "start": "parcel ./index.html",
     "prebuild": "npm run clean",
     "build": "parcel build --public-url ./index.html",
     "deploy": "build && gh-pages -d dist"
   },
-  "alias": {
-    "react": "preact/compat",
-    "react-dom": "preact/compat"
-  },
   "dependencies": {
-    "preact": "^10.5.5"
+    "@lit-doc/example-mul": "0.0.0",
+    "@lit-doc/example-plus": "0.0.0"
   },
   "devDependencies": {
-    "@types/chai": "^4.2.12",
-    "@types/mocha": "^8.0.3",
-    "chai": "^4.2.0",
+    "@lit-doc/core": "0.0.0",
+    "@lit-doc/cli": "0.0.0",
     "del-cli": "^3.0.1",
-    "gh-pages": "^3.1.0",
-    "mocha": "^8.1.3",
-    "nyc": "^15.1.0",
     "parcel": "^1.12.4",
-    "ts-mocha": "^7.0.0",
+    "stylus": "^0.54.8",
     "typescript": "^4.0.3"
   }
 }

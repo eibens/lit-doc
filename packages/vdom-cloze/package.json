@@ -1,12 +1,12 @@
 {
-  "name": "@eibens/lit-doc-vdom-cloze",
+  "name": "@lit-doc/vdom-cloze",
   "version": "0.0.0",
   "license": "UNLICENSED",
   "scripts": {
     "test": "nyc ts-mocha index.test.ts"
   },
   "dependencies": {
-    "@eibens/lit-doc-vdom-replace": "0.0.0"
+    "@lit-doc/vdom-replace": "0.0.0"
   },
   "devDependencies": {
     "@types/chai": "^4.2.12",

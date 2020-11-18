@@ -1,14 +1,9 @@
 {
-  "name": "lit-doc",
+  "name": "@lit-doc/example-plus",
   "version": "0.0.0",
   "license": "UNLICENSED",
   "scripts": {
     "test": "nyc ts-mocha index.test.ts"
-  },
-  "dependencies": {
-    "@eibens/lit-doc-util-intersperse": "0.0.0",
-    "@eibens/lit-doc-vdom-cloze": "0.0.0",
-    "@eibens/lit-doc-vdom-commonmark": "0.0.0"
   },
   "devDependencies": {
     "@types/chai": "^4.2.12",

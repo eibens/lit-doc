@@ -1,5 +1,5 @@
 {
-  "name": "@eibens/lit-doc-vdom-replace",
+  "name": "@lit-doc/vdom-replace",
   "version": "0.0.0",
   "license": "UNLICENSED",
   "scripts": {

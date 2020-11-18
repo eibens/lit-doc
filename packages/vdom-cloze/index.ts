@@ -1,5 +1,5 @@
 import {VNode, ComponentChildren} from 'preact'
-import Rule from '@eibens/lit-doc-vdom-replace'
+import Rule from '@lit-doc/vdom-replace'
 
 export default ({
   parts,

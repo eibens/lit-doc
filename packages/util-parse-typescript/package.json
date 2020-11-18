@@ -1,5 +1,5 @@
 {
-  "name": "@eibens/lit-doc-util-parse-typescript",
+  "name": "@lit-doc/util-parse-typescript",
   "version": "0.0.0",
   "license": "UNLICENSED",
   "scripts": {
