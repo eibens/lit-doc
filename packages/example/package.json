@@ -1,0 +1,27 @@
+{
+  "name": "@lit-doc/example",
+  "version": "0.0.0",
+  "license": "UNLICENSED",
+  "scripts": {
+    "lit": "yarn ts-node lit.gen.ts",
+    "start": "parcel index.html",
+    "build": "parcel build --public-url . index.html"
+  },
+  "alias": {
+    "react": "preact/compat",
+    "react-dom": "preact/compat"
+  },
+  "dependencies": {
+    "@lit-doc/example-mul": "0.0.0",
+    "@lit-doc/example-plus": "0.0.0",
+    "parcel": "^1.12.4",
+    "stylus": "^0.54.8"
+  },
+  "devDependencies": {
+    "@lit-doc/core": "0.0.0",
+    "@lit-doc/render": "0.0.0",
+    "preact": "^10.5.5",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
+  }
+}

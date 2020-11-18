@@ -1,50 +1,36 @@
-import {ComponentChildren, h} from 'preact'
-import intersperse from '@lit-doc/util-intersperse'
-import cloze from '@lit-doc/vdom-cloze'
-import parseTypescript from '@lit-doc/util-parse-typescript'
-import renderCommonmark from '@lit-doc/vdom-commonmark'
+import * as fs from 'fs'
+import * as path from 'path'
+import generate from '@lit-doc/generate'
 
-type Template<T = any> = [
-  ReadonlyArray<string>,
-  ...ReadonlyArray<T>
-]
-
-const fromSources = (source: string, doc: Template[]): ComponentChildren => {
-  const docs = doc.map(([strings, results]) => {
-    return cloze({
-      parts: intersperse(strings, results || []),
-      parse: renderCommonmark,
-      blank: i => `<span data-blank="${i}"/>`,
-      matchBlank: x => ('data-blank' in x.props)
-        ? Number(x.props['data-blank'])
-        : null
-    })
-  })
-
-  const parsed = parseTypescript(source)
-  return parsed.map(x => {
-    switch (x.type) {
-      case 'code':
-        return h('pre', null, h('code', null, x.source))
-      case 'doc':
-        return docs.shift()
+export type Config = {
+  timestamp: string
+  baseDir: string
+  packages: {
+    [key: string]: {
+      path: string
+      entry: string
     }
-  })
-}
-
-type LitDocDoc = {
-  source: string
-  module: {
-    doc: Template[]
   }
 }
 
-type LitDocDocs = Record<string, LitDocDoc>
+export default (config: Config) => {
 
-type LitDocProps = {
-  docs: LitDocDocs
-}
+  const packages = Object.entries(config.packages).map(([name, pkg]) => {
+    const pkgRoot = path.join(config.baseDir, pkg.path)
+    const sourceFile = path.join(pkgRoot, pkg.entry)
+    const infoFile = path.join(pkgRoot, 'package.json')
+    const source = fs.readFileSync(sourceFile, 'utf-8')
+    const info = JSON.parse(fs.readFileSync(infoFile, 'utf8'))
 
-export default (props: LitDocProps) => {
-  return props
+    if (info.name !== name) {
+      throw new Error(`lit-doc config error: name in package.json ('${info.name}') does not match name in config ('${name}')`)
+    }
+
+    return {source, info}
+  })
+
+  return generate({
+    timestamp: config.timestamp,
+    packages
+  })
 }
